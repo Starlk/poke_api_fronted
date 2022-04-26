@@ -6,10 +6,13 @@ const getDate = (name) => {
   sessionStorage.getItem(name);
 };
 
-const getDates = () => {
+const getDates = async () => {
   const listDate = [];
   for (let index = 0; index < sessionStorage.length; index++) {
-    listDate.push(sessionStorage.getItem(sessionStorage.key(index)));
+    let parse = await JSON.parse(
+      sessionStorage.getItem(sessionStorage.key(index))
+    );
+    listDate.push(parse);
   }
   return listDate;
 };
