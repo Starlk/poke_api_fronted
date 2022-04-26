@@ -6,11 +6,15 @@ const Home = () => {
   return (
     <div>
       <Header>
-        <li>
-          <Link to="/">Ver pokemones</Link>
+        <li className="nav-item active">
+          <Link to="/" className="nav-link text-white">
+            Ver pokemones
+          </Link>
         </li>
-        <li>
-          <Link to="/favoritePokemon">Pokemons favoritos</Link>
+        <li className="nav-item active">
+          <Link to="/favoritePokemon" className="nav-link text-white">
+            Pokemons favoritos
+          </Link>
         </li>
       </Header>
       <Outlet />
