@@ -1,6 +1,12 @@
 import React from "react";
 
-export const Modal = ({ name, handleClick, children, activate }) => {
+export const Modal = ({
+  name,
+  handleClick,
+  children,
+  activate,
+  isFavorite,
+}) => {
   return (
     <div
       className="modal fade"
@@ -25,15 +31,17 @@ export const Modal = ({ name, handleClick, children, activate }) => {
           <div className="modal-body">{children}</div>
           <div className="modal-footer">
             {activate && (
-              <p className="text-success fw-bold text-center"> Save pokemon</p>
+              <p className={`text-success`}>EL pokemon fue guardado</p>
             )}
-            <button
-              type="button"
-              className="btn btn-outline-success"
-              onClick={handleClick}
-            >
-              Save favorite
-            </button>
+            {!isFavorite && (
+              <button
+                type="button"
+                className={`btn btn-outline-success`}
+                onClick={handleClick}
+              >
+                save pokemon
+              </button>
+            )}
           </div>
         </div>
       </div>

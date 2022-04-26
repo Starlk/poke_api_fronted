@@ -1,27 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { Modal } from "./Modal";
-import { setDates } from "../helper/dbSessionStorage";
 
 export const PokemonCard = ({
   img,
   name,
   otherClass,
-  isNotFavorito,
+  isFavorito,
   abilities,
+  handleClick,
+  activatedMessage,
 }) => {
-  const [activatedMessage, setActivatedMessage] = useState(false);
-  const handleClick = () => {
-    setDates(name, { name, img, abilities });
-    setActivatedMessage(true);
-    setTimeout(() => setActivatedMessage(false), 2000);
-  };
   return (
     <>
       <article className={`card ${otherClass} rounded shadow p-3 mb-5 bg-body`}>
         <img src={img} alt={name} className="card-img-top" />
         <div className="card-body">
           <h1 className="card-title text-center fs-5">{name}</h1>
-          <div className={isNotFavorito ? "container-fluid" : "null"}>
+          <div className={"container-fluid"}>
             <button
               type="button"
               className="btn btn-outline-primary mb-2 center-block"
@@ -30,16 +25,24 @@ export const PokemonCard = ({
             >
               Detalle
             </button>
-
-            {isNotFavorito ? (
-              <button className="btn btn-outline-success">
-                Agregar favorito
+            {isFavorito && (
+              <button
+                type="button"
+                className={`btn btn-outline-danger`}
+                onClick={handleClick}
+              >
+                delete Pokemon
               </button>
-            ) : null}
+            )}
           </div>
         </div>
       </article>
-      <Modal name={name} handleClick={handleClick} activate={activatedMessage}>
+      <Modal
+        name={name}
+        handleClick={handleClick}
+        activate={activatedMessage}
+        isFavorite={isFavorito}
+      >
         <article className="card mb-3 border-0">
           <div className="row g-0">
             <div className="col-md-4 align-self-center">
