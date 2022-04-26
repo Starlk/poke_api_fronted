@@ -1,30 +1,37 @@
 import React from "react";
 
-export const Modal = ({ name, children }) => {
+export const Modal = ({ name, handleClick, children, activate }) => {
   return (
     <div
-      class="modal fade"
+      className="modal fade"
       id={name}
-      tabindex="-1"
+      tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title  text-center" id="exampleModalLabel">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title  text-center" id="exampleModalLabel">
               {name.toUpperCase()}
             </h5>
             <button
               type="button"
-              class="btn-close"
+              className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">{children}</div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-success">
+          <div className="modal-body">{children}</div>
+          <div className="modal-footer">
+            {activate && (
+              <p className="text-success fw-bold text-center"> Save pokemon</p>
+            )}
+            <button
+              type="button"
+              className="btn btn-outline-success"
+              onClick={handleClick}
+            >
               Save favorite
             </button>
           </div>
