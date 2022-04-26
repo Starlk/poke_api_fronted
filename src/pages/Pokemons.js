@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Container from "../layout/Container";
-import pokeApiExample from "../json/pokeApiExample.json";
 import { PokemonCard } from "../components/PokemonCard";
 import { setDates } from "../helper/dbSessionStorage";
 import useHttpGet from "../hooks/useHttpGet";
@@ -11,7 +10,7 @@ const Pokemons = () => {
     "https://localhost:7088/api/Pokemn"
   );
   const [activatedMessage, setActivatedMessage] = useState(false);
-  const handleSavePokemon = (name, img, abilities) => {
+  const handleSavePokemon = (name, img, abilities, types) => {
     setDates(name, { name, img, abilities });
     setActivatedMessage(true);
     setTimeout(() => setActivatedMessage(false), 2000);
@@ -37,12 +36,14 @@ const Pokemons = () => {
               img={item.sprites.front_default}
               key={idex}
               abilities={item.abilities}
+              types={item.types}
               otherClass="col-12 col-lg-2 col-md-4 my-4 mx-5 border border-black"
               handleClick={() =>
                 handleSavePokemon(
                   item.name,
                   item.sprites.front_default,
-                  item.abilities
+                  item.abilities,
+                  item.types
                 )
               }
               activatedMessage={activatedMessage}

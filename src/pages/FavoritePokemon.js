@@ -33,6 +33,7 @@ const FavoritePokemon = () => {
               img={item.img}
               key={idex}
               abilities={item.abilities}
+              types={item.types}
               otherClass="col-12 col-lg-2 col-md-4 my-4 mx-5 border border-black"
               isFavorito={true}
               handleClick={() => handleDeletePokemon(item.name)}

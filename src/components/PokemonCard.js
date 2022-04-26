@@ -9,6 +9,7 @@ export const PokemonCard = ({
   abilities,
   handleClick,
   activatedMessage,
+  types,
 }) => {
   return (
     <>
@@ -54,14 +55,24 @@ export const PokemonCard = ({
               <div className="card-body">
                 <ul className="list-group">
                   <li className="list-group-item active">Detalles</li>
-                  {abilities.map((i, index) => (
-                    <li
-                      key={index}
-                      className="list-group-item list-group-item-action"
-                    >
-                      habilidad : {i.ability.name}
-                    </li>
-                  ))}
+                  {abilities &&
+                    abilities.map((i, index) => (
+                      <li
+                        key={index}
+                        className="list-group-item list-group-item-action"
+                      >
+                        habilidad : {i.ability.name}
+                      </li>
+                    ))}
+                  {types &&
+                    types.map((i, index) => (
+                      <li
+                        key={index}
+                        className="list-group-item list-group-item-action"
+                      >
+                        tipo : {i.type.name}
+                      </li>
+                    ))}
                 </ul>
               </div>
             </div>
