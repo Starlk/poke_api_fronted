@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Pokemons from "./pages/Pokemons";
 import FavoritePokemon from "./pages/FavoritePokemon";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
