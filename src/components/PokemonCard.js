@@ -17,23 +17,25 @@ export const PokemonCard = ({
         <div className="card-body">
           <h1 className="card-title text-center fs-5">{name}</h1>
           <div className={"container-fluid"}>
-            <button
-              type="button"
-              className="btn btn-outline-primary mb-2 center-block"
-              data-bs-toggle="modal"
-              data-bs-target={`#${name}`}
-            >
-              Detalle
-            </button>
-            {isFavorito && (
+            <div className="row">
               <button
                 type="button"
-                className={`btn btn-outline-danger`}
-                onClick={handleClick}
+                className="btn btn-outline-primary mb-2 center-block"
+                data-bs-toggle="modal"
+                data-bs-target={`#${name}`}
               >
-                delete Pokemon
+                Detalle
               </button>
-            )}
+              {isFavorito && (
+                <button
+                  type="button"
+                  className={`btn btn-outline-danger text-center`}
+                  onClick={handleClick}
+                >
+                  Delete
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </article>

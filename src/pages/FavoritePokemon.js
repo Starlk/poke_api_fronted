@@ -7,7 +7,9 @@ const FavoritePokemon = () => {
   const [listPokemom, setListPokemom] = useState([]);
   const [activeMesagge, setActiveMesagge] = useState(false);
   useEffect(() => {
-    getDates().then((datos) => setListPokemom(datos));
+    getDates().then((datos) => {
+      if (datos) setListPokemom(datos);
+    });
   }, []);
   useEffect(() => {
     if (activeMesagge) getDates().then((datos) => setListPokemom(datos));
