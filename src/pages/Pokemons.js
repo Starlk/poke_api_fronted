@@ -3,6 +3,8 @@ import Container from "../layout/Container";
 import { PokemonCard } from "../components/PokemonCard";
 import { setDates } from "../helper/dbSessionStorage";
 import useHttpGet from "../hooks/useHttpGet";
+import Snipper from "../components/Snipper";
+import NoData from "../components/NoData";
 
 const Pokemons = () => {
   const [listPokemon, setListPokemon] = useState([]);
@@ -26,9 +28,9 @@ const Pokemons = () => {
     <Container>
       <section className="row align-center justify-content-center">
         {loading ? (
-          <h1>Cargado pokemons</h1>
+          <Snipper />
         ) : listPokemon === null ? (
-          <h1>No hay pokemones</h1>
+          <NoData text="no hay pokemones" />
         ) : (
           listPokemon.map((item, idex) => (
             <PokemonCard

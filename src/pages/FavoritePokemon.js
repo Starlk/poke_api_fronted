@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { deleteData, getDates } from "../helper/dbSessionStorage";
 import Container from "../layout/Container";
 import { PokemonCard } from "../components/PokemonCard";
+import NoData from "../components/NoData";
 
 const FavoritePokemon = () => {
   const [listPokemom, setListPokemom] = useState([]);
@@ -25,7 +26,7 @@ const FavoritePokemon = () => {
     <Container>
       <section className="row align-center justify-content-center">
         {listPokemom.length === 0 ? (
-          <h1>No hay pokemones favoritos</h1>
+          <NoData text="no tienes pokemones favoritos" />
         ) : (
           listPokemom.map((item, idex) => (
             <PokemonCard
